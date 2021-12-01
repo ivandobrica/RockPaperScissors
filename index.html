@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    
+    <section class="game">
+        <div class="score">
+            <div class="player-score">
+                <h2 class="score__title">Player</h2>
+                <p class="score__subtitle">0</p>
+            </div>
+            <div class="computer-score">
+                <h2 class="score__title">Computer</h2>
+                <p class="score__subtitle">0</p>
+            </div>
+        </div>
+
+        <div class="intro">
+            <h1 class="intro__title">Rock Paper Scissors</h1>
+            <button class="intro__button">Let's Play</button>
+        </div>
+
+        <div class="match">
+            <h2 class="winner">Choose an option</h2>
+            <div class="hands">
+                <i class="player-hand fas fa-hand-rock"></i>
+                <i class="computer-hand fas fa-hand-rock"></i>
+            </div>
+            <div class="options">
+                <button class="rock options__button">rock</button>
+                <button class="paper options__button">paper</button>
+                <button class="scissors options__button">scissors</button>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="./app.js"></script>
+</body>
+</html>
