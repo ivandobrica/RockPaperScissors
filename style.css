@@ -83,6 +83,9 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  opacity: 0;
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
 }
 
 @media (min-width: 768px) {
@@ -103,34 +106,6 @@
   font-size: 1.75rem;
 }
 
-.player-hand,
-.computer-hand {
-  color: #ffffff;
-  font-size: 4rem;
-}
-
-@media (min-width: 768px) {
-  .player-hand,
-  .computer-hand {
-    font-size: 7rem;
-  }
-}
-
-.fa-hand-rock {
-  -webkit-transform: rotate(100deg);
-          transform: rotate(100deg);
-}
-
-.fa-hand-paper {
-  -webkit-transform: rotate(100deg);
-          transform: rotate(100deg);
-}
-
-.fa-hand-scissors {
-  -webkit-transform: rotateY(180deg) rotate(-10deg);
-          transform: rotateY(180deg) rotate(-10deg);
-}
-
 .hands,
 .options {
   display: -webkit-box;
@@ -141,14 +116,16 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 2rem 0;
 }
 
-@media (min-width: 768px) {
-  .hands,
-  .options {
-    margin: 4rem 0;
-  }
+.player-hand,
+.computer-hand {
+  width: 100%;
+}
+
+.player-hand {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
 .options {
@@ -181,7 +158,11 @@
   cursor: pointer;
 }
 
-.fade {
+.fadeOut {
   opacity: 0;
+}
+
+.fadeIn {
+  opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */
