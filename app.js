@@ -1,6 +1,7 @@
 const game = () => {
   let pScore = 0;
   let cScore = 0;
+  let userr = prompt("Enter round number");
 
   const startGame = () => {
     const intro = document.querySelector(".intro");
@@ -10,9 +11,9 @@ const game = () => {
     playButton.addEventListener("click", () => {
       intro.classList.add("fadeOut");
       match.classList.add("fadeIn");
-      intro.addEventListener("transitionend", () => {
+      setTimeout(function () {
         intro.style.display = "none";
-      });
+      }, 1000);
     });
   };
 
@@ -58,6 +59,46 @@ const game = () => {
 
     playerScore.textContent = pScore;
     computerScore.textContent = cScore;
+
+    if (pScore == userr || cScore == userr) {
+      const intro = document.querySelector(".intro");
+      const introTitle = document.querySelector(".intro__title");
+      const playButton = document.querySelector(".intro__button");
+      const match = document.querySelector(".match");
+
+      intro.style.display = "flex";
+      setTimeout(function () {
+        intro.classList.remove("fadeOut");
+        match.classList.remove("fadeIn");
+      }, 20);
+
+      if ((pScore === userr) & (cScore !== userr)) {
+        introTitle.textContent = "Player is the winner!";
+      } else {
+        introTitle.textContent = "Computer is the winner!";
+      }
+
+      playButton.innerText = "Play again";
+
+      pScore = 0;
+      cScore = 0;
+      playerScore.textContent = pScore;
+      computerScore.textContent = cScore;
+
+      playButton.addEventListener("click", () => {
+        const playerHand = document.querySelector(".player-hand");
+        const computerHand = document.querySelector(".computer-hand");
+
+        playerHand.src = "./assets/Rock.png";
+        computerHand.src = "./assets/Rock.png";
+
+        intro.classList.add("fadeOut");
+        match.classList.add("fadeIn");
+        setTimeout(function () {
+          intro.style.display = "none";
+        }, 1000);
+      });
+    }
   };
 
   const compareHands = (playerChoice, computerChoice) => {
