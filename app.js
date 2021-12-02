@@ -1,7 +1,19 @@
 const game = () => {
   let pScore = 0;
   let cScore = 0;
-  let userr = prompt("Enter round number");
+  let roundNr = 5;
+
+  const rounds = document.querySelectorAll(".round");
+  rounds.forEach((round) => {
+    round.addEventListener("click", (e) => {
+      rounds.forEach((round) => {
+        round.classList.remove("default-round");
+      });
+      roundNr = e.target.innerText;
+      round.classList.add("default-round");
+      roundNr = parseInt(roundNr);
+    });
+  });
 
   const startGame = () => {
     const intro = document.querySelector(".intro");
@@ -60,7 +72,7 @@ const game = () => {
     playerScore.textContent = pScore;
     computerScore.textContent = cScore;
 
-    if (pScore == userr || cScore == userr) {
+    if (pScore === roundNr || cScore === roundNr) {
       const intro = document.querySelector(".intro");
       const introTitle = document.querySelector(".intro__title");
       const playButton = document.querySelector(".intro__button");
@@ -72,9 +84,10 @@ const game = () => {
         match.classList.remove("fadeIn");
       }, 20);
 
-      if ((pScore === userr) & (cScore !== userr)) {
+      if (pScore === roundNr && cScore !== roundNr) {
         introTitle.textContent = "Player is the winner!";
-      } else {
+      }
+      if (cScore === roundNr && pScore !== roundNr) {
         introTitle.textContent = "Computer is the winner!";
       }
 
