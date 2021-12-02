@@ -16,7 +16,26 @@ const game = () => {
     });
   };
 
+  const playMatch = () => {
+    const matchButtons = document.querySelectorAll(".options__button");
+    const playerHand = document.querySelector(".player-hand");
+    const computerHand = document.querySelector(".computer-hand");
+
+    const computerOptions = ["rock", "paper", "scissors"];
+
+    matchButtons.forEach((matchButton) => {
+      matchButton.addEventListener("click", function () {
+        const randomNumber = Math.floor(Math.random() * 3);
+        const computerChoice = computerOptions[randomNumber];
+
+        playerHand.src = `./${this.textContent}.png`;
+        computerHand.src = `./${computerChoice}.png`;
+      });
+    });
+  };
+
   startGame();
+  playMatch();
 };
 
 game();
