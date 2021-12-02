@@ -20,18 +20,30 @@ const game = () => {
     const matchButtons = document.querySelectorAll(".options__button");
     const playerHand = document.querySelector(".player-hand");
     const computerHand = document.querySelector(".computer-hand");
+    const hands = document.querySelectorAll(".hands img");
 
-    const computerOptions = ["rock", "paper", "scissors"];
+    hands.forEach((hand) => {
+      hand.addEventListener("animationend", function () {
+        this.style.animation = "";
+      });
+    });
+
+    const computerOptions = ["Rock", "Paper", "Scissors"];
 
     matchButtons.forEach((matchButton) => {
       matchButton.addEventListener("click", function () {
         const randomNumber = Math.floor(Math.random() * 3);
         const computerChoice = computerOptions[randomNumber];
 
-        compareHands(this.textContent, computerChoice);
+        setTimeout(() => {
+          compareHands(this.textContent, computerChoice);
 
-        playerHand.src = `./${this.textContent}.png`;
-        computerHand.src = `./${computerChoice}.png`;
+          playerHand.src = `./${this.textContent}.png`;
+          computerHand.src = `./${computerChoice}.png`;
+        }, 2000);
+
+        playerHand.style.animation = "shakePlayer 2s ease";
+        computerHand.style.animation = "shakeComputer 2s ease";
       });
     });
   };
@@ -55,8 +67,8 @@ const game = () => {
       winner.textContent = "Draw";
       return;
     }
-    if (playerChoice === "rock") {
-      if (computerChoice === "scissors") {
+    if (playerChoice === "Rock") {
+      if (computerChoice === "Scissors") {
         winner.textContent = "Player wins";
         pScore++;
         updateScore();
@@ -68,8 +80,8 @@ const game = () => {
         return;
       }
     }
-    if (playerChoice === "paper") {
-      if (computerChoice === "scissors") {
+    if (playerChoice === "Paper") {
+      if (computerChoice === "Scissors") {
         winner.textContent = "Computer wins";
         cScore++;
         updateScore();
@@ -81,8 +93,8 @@ const game = () => {
         return;
       }
     }
-    if (playerChoice === "scissors") {
-      if (computerChoice === "rock") {
+    if (playerChoice === "Scissors") {
+      if (computerChoice === "Rock") {
         winner.textContent = "Computer wins";
         cScore++;
         updateScore();
